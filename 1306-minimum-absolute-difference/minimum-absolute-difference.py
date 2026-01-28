@@ -8,5 +8,4 @@ class Solution:
                 diffs[diff] = [[arr[i], arr[i+1]]]
             else:
                 diffs[diff].append([arr[i], arr[i+1]])
-        min_diff = min(diffs.keys())
-        return diffs[min_diff]
+        return diffs[(min(diffs))]
