@@ -2,8 +2,15 @@ class Solution:
     def isPalindrome(self, s: str) -> bool:
         stri = ""
         for l in s:
-            if l.isalpha() or l.isdigit():
+            if l.isalnum():
                 stri += l.lower()
-                print(l)
-
-        return stri == stri[::-1]
+        
+        n = len(stri)
+        i = 0
+        j = n-1
+        while i<j:
+            if stri[i]!=stri[j]:
+                return False
+            i += 1
+            j -= 1
+        return True
