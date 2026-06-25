@@ -10,12 +10,9 @@ class Solution:
         if self.numCheck(n, digits):
             res.append(n)
 
-        return self.checkNumbers(n + 1, digits, res)
+        return self.checkNumbers(n + 2, digits, res)
 
     def numCheck(self, n, digits):
-        if n % 2 != 0:
-            return False
-
         digitss = digits.copy()
 
         for d in map(int, str(n)):
