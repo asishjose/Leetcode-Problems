@@ -1,6 +1,9 @@
 class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
-        for i in range(32):
-            if 2 ** i == n:
+        def recursion(num):
+            if num > n:
+                return False
+            if num == n:
                 return True
-        return False
+            return recursion(num * 2)
+        return recursion(1)
