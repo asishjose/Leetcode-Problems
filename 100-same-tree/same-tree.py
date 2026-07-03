@@ -13,7 +13,6 @@ class Solution:
         if p.val != q.val:
             return False
         
-        current = p.val == q.val
         left = self.isSameTree(p.left, q.left)
         right = self.isSameTree(p.right, q.right)
-        return current and left and right
+        return left and right
