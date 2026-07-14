@@ -14,6 +14,4 @@ class Solution:
             diameter = max(ld, rd, (lh+rh))
             height = 1 + max(lh, rh)
             return height, diameter
-        return max(dfs(root.left)[1],
-                   dfs(root.right)[1],
-                   (dfs(root.right)[0]+dfs(root.left)[0]))
+        return dfs(root)[1]
