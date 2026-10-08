@@ -4,15 +4,16 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
-    def isBalanced(self, root: Optional[TreeNode]) -> bool:
-        def dfs(root):
+class Solution(object):
+    def isBalanced(self, root):
+        bal = True
+        def height(root):
+            nonlocal bal
             if root is None:
-                return True, 0
-            lb, lh = dfs(root.left)
-            rb, rh = dfs(root.right)
-            height = 1 + max(lh, rh)
-            balanced = abs(lh-rh) <= 1 and lb and rb
-            return balanced, height
-        return dfs(root)[0]
-        
+                return 0
+            lh = height(root.left)
+            rh = height(root.right)
+            bal = bal and abs(lh-rh)<2
+            return 1 + max(lh, rh)
+        height(root)
+        return bal
