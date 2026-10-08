@@ -6,14 +6,21 @@
 #         self.right = right
 class Solution(object):
     def isBalanced(self, root):
-        bal = True
         def height(root):
-            nonlocal bal
             if root is None:
                 return 0
+
             lh = height(root.left)
+            if lh == -1:
+                return -1
+
             rh = height(root.right)
-            bal = bal and abs(lh-rh)<2
+            if rh == -1:
+                return -1
+
+            if abs(lh-rh)>1:
+                return -1
+                
             return 1 + max(lh, rh)
-        height(root)
-        return bal
+        res = height(root)
+        return res != -1
