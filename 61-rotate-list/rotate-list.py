@@ -8,21 +8,20 @@ class Solution:
         if head is None or head.next is None:
             return head
 
-        length = 0
+        length = 1
         curr = head
-        while curr:
+        while curr.next:
             length+=1
             curr = curr.next
-        k = k % length
+        k = k % length 
+        k = length - k       
+        curr.next = head
+
+        curr = head
+        print(k)
+        for _ in range(k-1):
+            curr = curr.next
+        head = curr.next
+        curr.next = None
         
-        for _ in range(k):
-            curr = head
-            while curr.next.next:
-                curr = curr.next
-            
-            temp = curr.next
-            curr.next = None
-            new_node = temp
-            new_node.next = head
-            head = new_node
         return head
