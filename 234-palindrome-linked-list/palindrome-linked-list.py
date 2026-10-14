@@ -12,11 +12,7 @@ class Solution:
             curr = curr.next
         curr = head
         while curr:
-            if curr.val == stack.pop():
-                curr = curr.next
-            else:
+            if stack.pop() != curr.val:
                 return False
+            curr = curr.next
         return True
-
-        
-
