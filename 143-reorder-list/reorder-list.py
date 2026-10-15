@@ -4,21 +4,40 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reorderList(self, head: Optional[ListNode]) -> None:
-        stack = []
-        curr = head
+    def reorderList(self, head: ListNode | None) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        if head is None or head.next is None:
+            return
+        #middle
+        slow = fast = head
+        while fast.next and fast.next.next:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
+        head2 = slow.next
+        slow.next = None
+
+        #reverse
+        curr = head2
+        prev = None
         while curr:
-            stack.append(curr)
-            curr = curr.next
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+        head2 = prev
 
-        n = len(stack)
+        #merge
         curr = head
+        ptr = head2
+        while ptr:
+            temp = curr.next
+            next_ptr = ptr.next
 
-        for _ in range(n//2):
-            last = stack.pop()
-            tmp = curr.next
-            curr.next = last
-            last.next = tmp
-            curr = tmp
+            curr.next = ptr
+            ptr.next = temp
 
-        curr.next = None
+            curr = temp
+            ptr = next_ptr
