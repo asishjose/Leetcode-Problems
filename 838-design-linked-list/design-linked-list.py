@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, val=None, next=None):
+    def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
@@ -32,8 +32,6 @@ class MyLinkedList:
         curr.next = Node(val)
 
     def addAtIndex(self, index: int, val: int) -> None:
-        if index < 0:
-            return 
         dummy = Node(0)
         dummy.next = self.head
         prev = dummy
