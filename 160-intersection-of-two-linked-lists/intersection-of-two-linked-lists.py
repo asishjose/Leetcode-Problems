@@ -10,15 +10,22 @@ class Solution:
             while curr1 and curr2:
                 curr1, curr2 = curr1.next, curr2.next
             if curr1:
-                curr2 = headA
+                shorter = curr1
+                longer = headA
+                short = headB
             else:
-                curr1 = headB
+                shorter = curr2
+                longer = headB
+                short = headA
+            bal = 0
+            while shorter:
+                shorter = shorter.next
+                bal += 1
+            for _ in range(bal):
+                longer = longer.next
+            curr1 = longer
+            curr2 = short
             while curr1 and curr2:
+                if curr1 == curr2:
+                    return curr1
                 curr1, curr2 = curr1.next, curr2.next
-            if curr1:
-                curr2 = headA
-            else:
-                curr1 = headB
-            while curr1 != curr2:
-                curr1, curr2 = curr1.next, curr2.next
-            return curr1
