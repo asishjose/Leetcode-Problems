@@ -17,12 +17,10 @@ class Solution:
 
             carry = num//10
             num = num%10
-            new_node = ListNode(num)
-            curr.next = new_node
+            curr.next = ListNode(num)
             curr = curr.next
-            if h1:
-                h1 = h1.next
-            if h2:
-                h2 = h2.next
+
+            h1 = h1.next if h1 else h1
+            h2 = h2.next if h2 else h2
 
         return result.next
