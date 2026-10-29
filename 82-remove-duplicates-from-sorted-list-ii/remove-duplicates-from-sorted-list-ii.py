@@ -16,7 +16,7 @@ class Solution:
             while curr.next and curr.val == curr.next.val:
                 curr = curr.next
             if start == curr:
-                prev.next = curr
+                # prev.next = curr
                 prev = curr
                 curr = curr.next
             else:
