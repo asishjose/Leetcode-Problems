@@ -5,22 +5,22 @@
 #         self.next = next
 class Solution:
     def deleteDuplicates(self, head: ListNode | None) -> ListNode | None:
+        dummy = ListNode(0)
+        dummy.next = head
+        prev = dummy
         curr = head
-        nums = []
+
         while curr:
-            nums.append(curr.val)
-            curr = curr.next
+            start = curr
 
-
-        counts = {}
-        for num in nums:
-            counts[num] = counts.get(num, 0)+1
-        distinct = [num for num in nums if counts[num]==1]
-
-        distinct.sort()
-        head = ListNode(0)
-        curr = head
-        for i in range(len(distinct)):
-            curr.next = ListNode(distinct[i])
-            curr = curr.next
-        return head.next
+            while curr.next and curr.val == curr.next.val:
+                curr = curr.next
+            if start == curr:
+                prev.next = curr
+                prev = curr
+                curr = curr.next
+            else:
+                curr = curr.next
+                prev.next = curr
+            
+        return dummy.next
