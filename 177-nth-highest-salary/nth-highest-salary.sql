@@ -3,10 +3,8 @@ BEGIN
 
     IF N <= 0 THEN
         RETURN QUERY SELECT NULL::INT;
-        RETURN;
-    END IF;
-
-  RETURN QUERY 
+    ELSE
+        RETURN QUERY 
     -- Write your PostgreSQL query statement below.
     SELECT (
             SELECT DISTINCT e.salary 
@@ -15,6 +13,7 @@ BEGIN
             OFFSET N-1
             LIMIT 1
         )::INT AS salary;
+        END IF;
 END;
 $$ LANGUAGE plpgsql;
 
