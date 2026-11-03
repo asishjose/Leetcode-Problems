@@ -8,18 +8,14 @@ class Solution:
         dummy = ListNode(0)
         dummy.next = head
         prev = dummy
-        curr = head
-
-        while curr:
-            start = curr
-
-            while curr.next and curr.val == curr.next.val:
-                curr = curr.next
-            if start == curr:
-                prev = curr
-                curr = curr.next
+        ptr1  = head
+        while ptr1:
+            ptr2 = ptr1
+            while ptr2.next and ptr2.val == ptr2.next.val:
+                ptr2 = ptr2.next
+            if ptr1 != ptr2:
+                prev.next = ptr2.next
             else:
-                curr = curr.next
-                prev.next = curr
-            
+                prev = ptr2
+            ptr1 = ptr2.next
         return dummy.next
