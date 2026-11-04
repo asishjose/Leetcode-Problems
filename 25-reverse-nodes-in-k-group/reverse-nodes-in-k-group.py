@@ -12,7 +12,6 @@ class Solution:
             curr = curr.next
             length+=1
         multiple_k = True if length%k == 0 else False
-        print(length, multiple_k)
 
         ## Splitting
         heads = []
@@ -26,7 +25,6 @@ class Solution:
                 count+=1
             next_head = curr.next
             curr.next = None
-        print(heads)
 
         ## Reveresing
         n = len(heads) if multiple_k else len(heads)-1
@@ -42,7 +40,6 @@ class Solution:
             reversed_heads.append(prev)
         if not multiple_k:
             reversed_heads.append(heads[n])
-        print(reversed_heads)
 
         ## Joining
         dummy = ListNode(0)
